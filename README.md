@@ -23,7 +23,7 @@ unreal-mcp-vm-bridge/
 
 ## Prerequisites
 
-VMware Workstation with the VM network adapter set to **Bridged**, and the bridged adapter manually set to your physical Ethernet adapter (not Automatic). This ensures the VM gets a LAN IP on the same subnet as the host. Unreal Engine with the unreal-mcp plugin installed and active. Claude Code installed in the VM.
+VMware Workstation with the VM network adapter set to **Bridged**, and the bridged adapter manually set to your physical Ethernet adapter (not Automatic). This ensures the VM gets a LAN IP on the same subnet as the host. Unreal Engine with the unreal-mcp plugin installed and active. An MCP client installed in the VM (Claude Code, Cursor, Windsurf, or any client that supports HTTP MCP servers).
 
 ## Network topology
 
@@ -36,9 +36,9 @@ ipconfig
 ping <HOST_IP>
 ```
 
-## Step 2. Configure Claude Code (VM)
+## Step 2. Configure your MCP client (VM)
 
-Create `.mcp.json` at your project root on the VM:
+Create `.mcp.json` at your project root on the VM (Claude Code format, adapt to your client):
 
 ```json
 {
@@ -99,7 +99,7 @@ From the **VM**, run the test script:
 
 A `405 Method Not Allowed` response is a success indicator. It means the server is reachable and running. MCP uses POST, so a GET probe will always return 405.
 
-Restart Claude Code in the VM. The `unreal-mcp` server should show as connected.
+Restart your MCP client in the VM. The `unreal-mcp` server should show as connected.
 
 ## Cleanup
 
