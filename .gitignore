@@ -1,0 +1,10 @@
+# Windows
+Thumbs.db
+desktop.ini
+*.lnk
+
+# VS Code
+.vscode/
+
+# PowerShell
+*.ps1xml
