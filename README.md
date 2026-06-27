@@ -1,7 +1,6 @@
 # unreal-mcp-vm-bridge
 
-A reproducible setup for tunneling any MCP client (running in a VM) to the
-unreal-mcp plugin (bound to localhost on the host) via a Windows port proxy.
+Reference implementation for exposing the official Unreal MCP plugin to an isolated VM without modifying the plugin.
 
 > **Architecture note:** unreal-mcp binds to `127.0.0.1` on the host, making
 > it unreachable from any external interface including the VM. A `netsh portproxy`
