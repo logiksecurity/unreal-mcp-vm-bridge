@@ -1,6 +1,7 @@
 # unreal-mcp-vm-bridge
 
-Reference implementation for exposing the official Unreal MCP plugin to an isolated VM without modifying the plugin.
+A reproducible setup for tunneling any MCP client (running in a VM) to the
+unreal-mcp plugin (bound to localhost on the host) via a Windows port proxy.
 
 > **Architecture note:** unreal-mcp binds to `127.0.0.1` on the host, making
 > it unreachable from any external interface including the VM. A `netsh portproxy`
@@ -24,10 +25,25 @@ unreal-mcp-vm-bridge/
 
 VMware Workstation with the VM network adapter set to **Bridged**, and the bridged adapter manually set to your physical Ethernet adapter (not Automatic). This ensures the VM gets a LAN IP on the same subnet as the host. Unreal Engine with the unreal-mcp plugin installed and active. An MCP client installed in the VM (Claude Code, Cursor, Windsurf, or any client that supports HTTP MCP servers).
 
+## Pre-flight checklist
+
+Confirm these three layers are ready before running the bridge setup.
+
+| Layer | Item | How |
+|-------|------|-----|
+| Unreal (host) | Plugin `UnrealMCP` enabled | Edit > Plugins > search "MCP" |
+| Unreal (host) | Plugin `Terminal` enabled | Edit > Plugins > search "Terminal" |
+| Unreal (host) | Plugin `EditorToolset` enabled | Edit > Plugins > search "EditorToolset" |
+| Unreal (host) | MCP server auto-start ON | Edit > Editor Preferences > Model Context Protocol |
+| Unreal (host) | `.mcp.json` generated | UE console: `ModelContextProtocol.GenerateClientConfig ClaudeCode` (or `all`) — [Epic docs](https://dev.epicgames.com/documentation/unreal-engine/unreal-mcp-in-unreal-editor) |
+| Unreal (host) | Editor open | MCP server lives with the editor process |
+| Bridge (host) | portproxy + firewall active | `scripts/umvb-status.ps1` as Administrator |
+| VM | `.mcp.json` at project root | See Step 2 |
+| VM | MCP client installed and logged in | `claude` in terminal, `/login` if needed |
+
 ## Network topology
 
 ![topology](assets/topology.svg)
-
 ## Step 1. Get the host IP from the VM
 
 ```cmd
