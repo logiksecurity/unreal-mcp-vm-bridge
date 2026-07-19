@@ -3,6 +3,10 @@
 A reproducible setup for tunneling any MCP client (running in a VM) to the
 unreal-mcp plugin (bound to localhost on the host) via a Windows port proxy.
 
+![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
+![Unreal Engine](https://img.shields.io/badge/Unreal_Engine-unreal--mcp-0E1128.svg)
+![Windows host](https://img.shields.io/badge/host-Windows-0078d6.svg)
+
 > **Architecture note:** unreal-mcp binds to `127.0.0.1` on the host, making
 > it unreachable from any external interface including the VM. A `netsh portproxy`
 > rule forwards a LAN-visible host port back to that loopback address, with no plugin
