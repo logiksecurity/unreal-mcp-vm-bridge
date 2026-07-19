@@ -12,6 +12,8 @@ unreal-mcp plugin (bound to localhost on the host) via a Windows port proxy.
 > rule forwards a LAN-visible host port back to that loopback address, with no plugin
 > changes, no shared filesystem, and no custom proxy layer.
 
+https://github.com/user-attachments/assets/3ade7c7b-f61b-458a-8849-4503f06d6fc7
+
 ```
 unreal-mcp-vm-bridge/
 ├── README.md
